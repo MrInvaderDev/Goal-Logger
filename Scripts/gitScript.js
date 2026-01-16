@@ -1,3 +1,6 @@
+// Store the latest release download URL
+let latestReleaseDownloadUrl = null;
+
 async function fetchGitHubReleases() {
     const apiUrl = 'https://api.github.com/repos/MrInvaderDev/GoalLogger/releases';
     
@@ -13,6 +16,20 @@ async function fetchGitHubReleases() {
         const exeReleases = releases.filter(release => 
             release.assets && release.assets.some(asset => asset.name.endsWith('.exe'))
         );
+        
+        // Store the latest release download URL if available
+        if (exeReleases.length > 0) {
+            exeReleases.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+            const latestExeAsset = exeReleases[0].assets.find(asset => asset.name.endsWith('.exe'));
+            if (latestExeAsset) {
+                latestReleaseDownloadUrl = latestExeAsset.browser_download_url;
+                // Set the download button href
+                const downloadBtn = document.getElementById('latest-release');
+                if (downloadBtn) {
+                    downloadBtn.href = latestReleaseDownloadUrl;
+                }
+            }
+        }
         
         // Display the releases
         displayReleases(exeReleases);
