@@ -63,10 +63,10 @@ function displayReleases(releases) {
         if (exeAsset) {
             const releaseDate = new Date(release.published_at).toLocaleDateString();
             html += `
-                <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                    <p style="margin: 0 0 4px 0; font-weight: 600;">${release.tag_name}</p>
-                    <small style="opacity: 0.7; display: block; margin-bottom: 8px;">${releaseDate}</small>
-                    <a href="${exeAsset.browser_download_url}" class="download-btn" style="display: inline-block; padding: 6px 12px; background-color: #7c4dff; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; cursor: pointer;">
+                <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 16px;">
+                    <p style="margin: 0; font-weight: 600; min-width: 80px;">${release.tag_name}</p>
+                    <small style="opacity: 0.7; min-width: 100px;">${releaseDate}</small>
+                    <a href="${exeAsset.browser_download_url}" class="download-btn" style="display: inline-block; padding: 6px 12px; background-color: #7c4dff; color: white; text-decoration: none; border-radius: 4px; font-size: 12px; cursor: pointer; white-space: nowrap;">
                         Download ${exeAsset.name}
                     </a>
                 </div>
