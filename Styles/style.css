@@ -73,12 +73,14 @@ nav {
 
 .GL {
     color: var(--accent);
+    font-style: italic;
+    font-weight: bold;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 130px;
+    grid-auto-rows: auto;
     gap: 20px;
     padding: 5%;
 }
